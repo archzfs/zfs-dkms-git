@@ -6,26 +6,32 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-dkms-git"
-_commit='0c763f76b1bc6d5e38a638493d13c9b54222743d'
+_commit='064c2cf40ea367f0b7608a3e8b537f87190f52cb'
 pkgdesc="Kernel modules for the Zettabyte File System."
 
-pkgver=2020.12.21.r6475.g0c763f76b
+pkgver=2020.12.30.r6489.g064c2cf40
 pkgrel=1
 makedepends=("git")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
-sha256sums=("SKIP")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
+              "autoconf-270-compatibility.patch")
+sha256sums=("SKIP"
+                        "dc82ee4e62f76b68d972423909c38ced28dea876c6ef4f19037a24a8dbb2fff5")
 license=("CDDL")
 depends=("zfs-utils-git=${pkgver}" "lsb-release" "dkms")
 provides=("zfs" "zfs-headers" "spl" "spl-headers")
 groups=("archzfs-dkms-git")
 conflicts=("zfs" "zfs-headers" "spl" "spl-headers")
 replaces=("spl-dkms-git")
+prepare() {
+    cd "${srcdir}/zfs"
+    patch -Np1 -i ${srcdir}/autoconf-270-compatibility.patch
+}
 
 build() {
     cd "${srcdir}/zfs"
-    ./autogen.sh
+    ./autogen.sh || true
 }
 
 package() {
