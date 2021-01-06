@@ -6,10 +6,10 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-dkms-git"
-_commit='064c2cf40ea367f0b7608a3e8b537f87190f52cb'
+_commit='06346cc5b50bef7327f7c901b92cbadab7fd7265'
 pkgdesc="Kernel modules for the Zettabyte File System."
 
-pkgver=2020.12.30.r6489.g064c2cf40
+pkgver=2021.01.02.r6491.g06346cc5b
 pkgrel=1
 makedepends=("git")
 arch=("x86_64")
@@ -24,10 +24,6 @@ provides=("zfs" "zfs-headers" "spl" "spl-headers")
 groups=("archzfs-dkms-git")
 conflicts=("zfs" "zfs-headers" "spl" "spl-headers")
 replaces=("spl-dkms-git")
-prepare() {
-    cd "${srcdir}/zfs"
-    patch -Np1 -i ${srcdir}/autoconf-270-compatibility.patch
-}
 
 build() {
     cd "${srcdir}/zfs"
