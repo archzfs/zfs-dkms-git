@@ -25,7 +25,7 @@ replaces=("spl-dkms-git")
 
 build() {
     cd "${srcdir}/zfs"
-    ./autogen.sh || true
+    ./autogen.sh
 }
 
 package() {
