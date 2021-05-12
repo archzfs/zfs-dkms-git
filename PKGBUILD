@@ -6,16 +6,18 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-dkms-git"
-_commit='c903a756ac5ff151b99080f60eead22fc6302f0f'
+_commit='7d07d1be39f4bc36930e304e36e95b712e379a5e'
 pkgdesc="Kernel modules for the Zettabyte File System."
 
-pkgver=2021.04.30.r6791.gc903a756a
+pkgver=2021.05.11.r6814.g7d07d1be3
 pkgrel=1
 makedepends=("git")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
-sha256sums=("SKIP")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
+              "linux-5.12-compat.patch")
+sha256sums=("SKIP"
+                        "9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf")
 license=("CDDL")
 depends=("zfs-utils-git=${pkgver}" "lsb-release" "dkms")
 provides=("zfs" "zfs-headers" "spl" "spl-headers")
