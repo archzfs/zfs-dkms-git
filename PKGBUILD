@@ -6,10 +6,10 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-dkms-git"
-_commit='8f2f6cd2ac688916adb2caf979daf95365ccb48f'
+_commit='39be46f43f96fb7420386d03751b01f5cb376d6b'
 pkgdesc="Kernel modules for the Zettabyte File System."
 
-pkgver=2024.02.26.r9034.g8f2f6cd2ac
+pkgver=2024.03.29.r9067.g39be46f43f
 pkgrel=1
 makedepends=("git")
 arch=("x86_64")
@@ -22,12 +22,6 @@ provides=("zfs" "zfs-headers" "spl" "spl-headers")
 groups=("archzfs-dkms-git")
 conflicts=("zfs" "zfs-headers" "spl" "spl-headers")
 replaces=("spl-dkms-git")
-prepare() {
-    cd "${srcdir}/zfs"
-    patch -Np1 -i ${srcdir}/enforce-kernel-max-version.patch
-    patch -Np1 -i ${srcdir}/linux-6.8-compat.patch
-    patch -Np1 -i ${srcdir}/kernel-6.8-meta.patch
-}
 
 build() {
     cd "${srcdir}/zfs"
