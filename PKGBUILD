@@ -6,16 +6,16 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-dkms-git"
-_commit='a6edc0adb293caf4e8bca2948af71b192b26bf58'
+_commit='04bae5ec95f7273105237159a882d5b72ec2b998'
 pkgdesc="Kernel modules for the Zettabyte File System."
 
-pkgver=2024.04.29.r9134.ga6edc0adb2
+pkgver=2024.05.03.r9144.g04bae5ec95
 pkgrel=1
 makedepends=("git")
 arch=("x86_64")
 url="https://openzfs.org/"
-source=("git+https://github.com/openzfs/zfs.git#commit=${_commit}" "enforce-kernel-max-version.patch" "linux-6.8-compat.patch" "kernel-6.8-meta.patch")
-sha256sums=("SKIP" "c5a9f546638c706844d5aff99f40366db1684679c3318d3a4093e0746748a711" "b875c877069a4c75c7b2b4b22d048e66f415b86f862ef6b3b83d3524694cc973" "1bc3b2e79e481b1bf41e78f9d142de8e97326288ecdc97f8db65496b7c4fd63b")
+source=("git+https://github.com/openzfs/zfs.git#commit=${_commit}")
+sha256sums=("SKIP")
 license=("CDDL")
 depends=("zfs-utils-git=${pkgver}" "lsb-release" "dkms")
 provides=("zfs" "zfs-headers" "spl" "spl-headers")
